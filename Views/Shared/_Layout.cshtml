@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar  navbar-inverse">
+
+        <div class="container">
+            <div class="mynav_navbar">
+
+                <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <div class="mynav_dropdown">
+
+                    <button class="mynav_dropbtn">
+                       Company
+                    </button>
+                    <div class="mynav_dropdown-content">
+                        <a href="/Designation/Designation">Designations</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Contact">Departments</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Contact">Overtimes</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Contact">Departments</a>
+                        <hr />
+                        <a asp-area="" asp-controller="Home" asp-action="Contact">User Rights    </a>
+                        <a asp-area="" asp-controller="Home" asp-action="Contact">Departments</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Contact">Policy Name</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Contact">Hiring</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Contact">Division</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Contact">Hostels</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Contact">Bank</a>
+                    </div>
+                </div>
+                <div class="mynav_dropdown">
+                    <button class="mynav_dropbtn">
+                        Employee
+                    </button>
+                    <div class="mynav_dropdown-content">
+                        <a asp-area="" asp-controller="Home" asp-action="About">Employee List</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Contact">Add Employee</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Contact">Migration History</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Contact">Enrolled/Not Yet Enrolled</a>
+
+                    </div>
+                </div>
+                <div class="mynav_dropdown">
+                    <button class="mynav_dropbtn">
+                        Attendance
+                    </button>
+                    <div class="mynav_dropdown-content">
+                        <a asp-area="" asp-controller="Home" asp-action="About">Mark Attendance</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Contact">Attendance Log</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Contact">Attendance Summary</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Contact">Bio Attendance</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Contact">Raw Data</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Contact">Attendance Dashboard</a>
+                    </div>
+                </div>
+                <div class="mynav_dropdown">
+                    <button class="mynav_dropbtn">
+                       Self Services
+                    </button>
+                    <div class="mynav_dropdown-content">
+                        <a asp-area="" asp-controller="Home" asp-action="About">My Attendance</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Contact">My Leaves</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Contact">My Leave Ledger</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Contact">My To Do List</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Contact">My Profile</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Contact">Approve CR</a>
+                    </div>
+                </div>
+            </div>
+            @*<div class="mynav_dropdown">
+                <button class="mynav_dropbtn">
+                    Reports
+                </button>
+                <div class="mynav_dropdown-content">
+                    <a asp-area="" asp-controller="Home" asp-action="About">Daily Attendance </a>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Monthly Attendance </a>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Late Arrival</a>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Machine Log</a>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Reports to</a>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Company Attend Summary</a>
+                </div>
+            </div>
+            <div class="mynav_dropdown">
+                <button class="mynav_dropbtn">
+                   HR
+                </button>
+                <div class="mynav_dropdown-content">
+                    <a asp-area="" asp-controller="Home" asp-action="About">Approve Leaves</a>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Leave Approvals History</a>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Attendance Request Approval</a>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Leave Ledger</a>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Announcements</a>
+    
+                </div>
+            </div>*@
+        </div>
+
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

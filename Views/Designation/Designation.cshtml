@@ -1,0 +1,50 @@
+﻿@model IEnumerable<CloudBasedFingerIdentificationSystem.Models.ViewModels.DesignationVM>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Add New Designation", "adddesignation")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.desigcode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.designame)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rank)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reports_to)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.desigcode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.designame)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rank)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reports_to)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.desigcode }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.desigcode })
+        </td>
+    </tr>
+}
+
+</table>
