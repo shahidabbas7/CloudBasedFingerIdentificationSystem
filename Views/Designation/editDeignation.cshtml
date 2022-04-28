@@ -1,31 +1,24 @@
 ﻿@model CloudBasedFingerIdentificationSystem.Models.ViewModels.DesignationVM
 
 @{
-    ViewBag.Title = "adddesignation";
+    ViewBag.Title = "Edit Deignation";
 }
 
-<h2>Add Designation</h2>
-@if (TempData["sm"] != null)
-{
-    <div class="alert alert-success">
-        @TempData["sm"]
-    </div>
-}
+<h2>Edit Deignation</h2>
+
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.desigcode, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.desigcode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.desigcode, new { htmlAttributes = new { @class = "form-control" ,@readonly= "readonly" } })
                 @Html.ValidationMessageFor(model => model.desigcode, "", new { @class = "text-danger" })
-                @Html.ValidationMessage("desigerrorc", new { @class = "text-danger" })
-
             </div>
         </div>
 
@@ -34,7 +27,7 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.designame, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.designame, "", new { @class = "text-danger" })
-                @Html.ValidationMessage("desigerror", new { @class = "text-danger" })
+                @Html.ValidationMessage("desigError", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -56,14 +49,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Add Designation" class="btn btn-default" />
+                <input type="submit" value="Edit Designation" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to designation", "Designation")
+    @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {

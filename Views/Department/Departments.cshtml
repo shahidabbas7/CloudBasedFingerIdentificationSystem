@@ -1,0 +1,117 @@
+﻿@model IEnumerable<CloudBasedFingerIdentificationSystem.Models.ViewModels.DepartmentVM>
+
+@{
+    ViewBag.Title = "Departments";
+}
+
+<h2>Departments</h2>
+@if (TempData["SM"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SM"]
+    </div>
+}
+<p>
+    <div class="text-right">
+        @Html.ActionLink("Add New Department", "adddepartments")
+
+    </div>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.division)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.parentdeptcode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.deptcode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.deptname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.shortdescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.depthead)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.approvedsalary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.salarygroup)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.leaveapprovedlevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.primaryreportsto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.secondaryreportsto)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.division)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.parentdeptcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.deptcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.deptname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.shortdescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.depthead)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.approvedsalary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.salarygroup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.leaveapprovedlevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.primaryreportsto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.secondaryreportsto)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.deptcode }) |
+                @Html.ActionLink("Delete", "DeleteDeparments", new { id = item.deptcode }, new { @class = "delete" })
+            </td>
+        </tr>
+    }
+
+</table>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+    $(function(){
+        $("a.delete").click(function () {
+            if (!confirm("Are you sure you want to delete  Designation")) return false;
+        });
+    });
+    </script>
+}

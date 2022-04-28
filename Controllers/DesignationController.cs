@@ -46,14 +46,14 @@ namespace CloudBasedFingerIdentificationSystem.Controllers
                 //check if designation name exist
                 if (db.designations.Any(x => x.designame == model.designame))
                 {
-                    ModelState.AddModelError(" ", "Designation name already exist");
+                    ModelState.AddModelError("desigerror", "Designation name "+model.designame+ " already exist");
                     return View(model);
                 }
                 //check if id exist
                 //check if designation name exist
                 if (db.designations.Any(x => x.desigcode == model.desigcode))
                 {
-                    ModelState.AddModelError(" ", "Designation code already exist");
+                    ModelState.AddModelError("desigerrorc ", "Designation code "+model.desigcode+ " already exist");
                     return View(model);
                 }
                 //save dto
@@ -69,6 +69,67 @@ namespace CloudBasedFingerIdentificationSystem.Controllers
             //redirect to  page
             return RedirectToAction("adddesignation");
 
+        }
+        // get: Designation//editdesignation
+        public ActionResult editDeignation(int id)
+        {
+            //delcare designationvm
+            DesignationVM model;
+            //init designationvm
+            using(contextdb db=new contextdb())
+            {
+                //init designationdto
+                DesignationDTO dto = db.designations.Find(id);
+                model = new DesignationVM(dto);
+
+            }
+            return View(model);
+        }
+        // get: Designation//editdesignation
+        [HttpPost]
+        public ActionResult editDeignation(DesignationVM model)
+        {
+            //check if model state is valid
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            //init designationvm
+            using (contextdb db = new contextdb())
+            {
+                
+                //check if the designation Already exist
+                if (db.designations.Where(x => x.desigcode != model.desigcode).Any(x => x.designame == model.designame))
+                {
+                    ModelState.AddModelError("desigError", "Designation " +  model.designame + " Already exist");
+                    return View(model);
+                }
+                // init deptcode
+                int desgcode = model.desigcode;
+                //init designationdto
+                DesignationDTO dto = db.designations.Find(desgcode);
+                //set to dto
+                dto.designame = model.designame;
+                dto.rank = model.rank;
+                dto.Reports_to = model.Reports_to;
+                //save changes to database
+                db.SaveChanges();
+            }
+            //set success message
+            TempData["SM"] = "Designation Successfully Updated";
+            return RedirectToAction("Designation");
+        }
+        // get: Designation//DeleteDesignation
+        public ActionResult DeleteDesignation(int id)
+        {
+            //delete designation
+            using(contextdb db=new contextdb())
+            {
+                DesignationDTO dto = db.designations.Find(id);
+                db.designations.Remove(dto);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Designation");
         }
     }
 }

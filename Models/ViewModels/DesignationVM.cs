@@ -19,6 +19,7 @@ namespace CloudBasedFingerIdentificationSystem.Models.ViewModels
             designame = dto.designame;
             rank = dto.rank;
             Reports_to = dto.Reports_to;
+            employeeid = dto.employeeid;
         }
         [Display(Name ="Designation Code")]
         [Required]
@@ -30,6 +31,8 @@ namespace CloudBasedFingerIdentificationSystem.Models.ViewModels
         public string rank { get; set; }
         [Display(Name = "Reports To")]
         public string Reports_to { get; set; }
-        
+        public int? employeeid { get; set; }
+
+
     }
 }

@@ -1,11 +1,16 @@
 ﻿@model IEnumerable<CloudBasedFingerIdentificationSystem.Models.ViewModels.DesignationVM>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Designation";
 }
 
-<h2>Index</h2>
-
+<h2>Designation</h2>
+@if (TempData["SM"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SM"]
+    </div>
+}
 <p>
     @Html.ActionLink("Add New Designation", "adddesignation")
 </p>
@@ -26,25 +31,36 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.desigcode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.designame)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.rank)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Reports_to)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.desigcode }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.desigcode })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.desigcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.designame)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rank)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reports_to)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "editDeignation", new { id = item.desigcode }) |
+                @Html.ActionLink("Delete", "DeleteDesignation", new { id = item.desigcode }, new { @class = "delete" })
+            </td>
+        </tr>
+    }
 
 </table>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script>
+    $(function(){
+        $("a.delete").click(function () {
+            if (!confirm("Are you sure you want to delete  Designation")) return false;
+        });
+    });
+    </script>
+}

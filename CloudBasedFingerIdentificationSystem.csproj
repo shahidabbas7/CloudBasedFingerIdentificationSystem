@@ -126,13 +126,16 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DeparmentController.cs" />
     <Compile Include="Controllers\DesignationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\data\contextdb.cs" />
+    <Compile Include="Models\data\DepartmentDTO.cs" />
     <Compile Include="Models\data\DesignationDTO.cs" />
+    <Compile Include="Models\ViewModels\DepartmentVM.cs" />
     <Compile Include="Models\ViewModels\DesignationVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -178,6 +181,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Designation\Designation.cshtml" />
     <Content Include="Views\Designation\adddesignation.cshtml" />
+    <Content Include="Views\Designation\editDeignation.cshtml" />
+    <Content Include="Views\Department\Departments.cshtml" />
+    <Content Include="Views\Department\adddepartments.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

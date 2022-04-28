@@ -15,5 +15,7 @@ namespace CloudBasedFingerIdentificationSystem.Models.data
         public string designame { get; set; }
         public string rank { get; set; }
         public string Reports_to { get; set; }
+        public int? employeeid { get; set; }
+
     }
 }
