@@ -135,8 +135,10 @@
     <Compile Include="Models\data\contextdb.cs" />
     <Compile Include="Models\data\DepartmentDTO.cs" />
     <Compile Include="Models\data\DesignationDTO.cs" />
+    <Compile Include="Models\data\PolicyDTO.cs" />
     <Compile Include="Models\ViewModels\DepartmentVM.cs" />
     <Compile Include="Models\ViewModels\DesignationVM.cs" />
+    <Compile Include="Models\ViewModels\PolicyVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -184,6 +186,10 @@
     <Content Include="Views\Designation\editDeignation.cshtml" />
     <Content Include="Views\Department\Departments.cshtml" />
     <Content Include="Views\Department\adddepartments.cshtml" />
+    <Content Include="Views\Department\EditDepartments.cshtml" />
+    <Content Include="Views\Department\policy.cshtml" />
+    <Content Include="Views\Department\addpolicy.cshtml" />
+    <Content Include="Views\Department\editpolicy.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

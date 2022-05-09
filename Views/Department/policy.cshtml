@@ -1,0 +1,56 @@
+﻿@model IEnumerable<CloudBasedFingerIdentificationSystem.Models.ViewModels.PolicyVM>
+
+@{
+    ViewBag.Title = "policy";
+}
+
+<h2>policy</h2>
+@if (TempData["SM"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SM"]
+    </div>
+}
+<p>
+    <div class="text-right">
+        @Html.ActionLink("add New Policy", "addpolicy")
+    </div>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Policyid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PolicyName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Policyid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PolicyName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Editpolicy", new { id = item.Policyid }) |
+                @Html.ActionLink("Delete", "Deletepolicy", new { id = item.Policyid }, new { @class = "delete" })
+            </td>
+        </tr>
+    }
+
+</table>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+    $(function(){
+        $("a.delete").click(function () {
+            if (!confirm("Are you sure you want to delete  Designation")) return false;
+        });
+    });
+    </script>
+}

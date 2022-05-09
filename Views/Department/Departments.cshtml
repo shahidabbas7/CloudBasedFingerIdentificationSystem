@@ -17,7 +17,7 @@
 
     </div>
 </p>
-<table class="table">
+<table class="table table-striped table-responsive">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.division)
@@ -98,7 +98,7 @@
                 @Html.DisplayFor(modelItem => item.secondaryreportsto)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.deptcode }) |
+                @Html.ActionLink("Edit", "EditDepartments", new { id = item.deptcode }) |
                 @Html.ActionLink("Delete", "DeleteDeparments", new { id = item.deptcode }, new { @class = "delete" })
             </td>
         </tr>

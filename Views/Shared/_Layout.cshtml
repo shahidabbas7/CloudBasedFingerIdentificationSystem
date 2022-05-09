@@ -7,101 +7,122 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
-<body>
-    <nav class="navbar  navbar-inverse ">
+<body class="font">
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary navbar-expand-lg nav-color" >
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
 
-        <div class="container">
-            <div class="mynav_navbar">
+                    <li class="nav-item dropdown font">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Company
+                        </a>
+                        <ul class="dropdown-menu font" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item font" href="/Designation/Designation">Designations</a></li>
+                            <li><a class="dropdown-item font" href="/Department/Departments">Departments</a></li>
+                            <li><a class="dropdown-item font" href="/Department/overtime">Overtimes</a></li>
+                            <li><br /></li>
+                            <li><a class="dropdown-item font" href="#">User Rights</a></li>
+                            <li><a class="dropdown-item font" href="/Department/policy">Policy Names</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle font" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Hiring
+                                </a>
+                                <ul class="dropdown-menu font" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item font" href="#">Vacancy</a></li>
+                                    <li><a class="dropdown-item font" href="#">Candidates</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="dropdown-item font" href="/Department/Departments">Template Master</a></li>
+                            <li><a class="dropdown-item font" href="/Department/Departments">Division</a></li>
+                            <li><a class="dropdown-item font" href="/Department/Departments">Hostels</a></li>
+                            <li><a class="dropdown-item font" href="/Department/Departments">Banks</a></li>
 
-                <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                <div class="mynav_dropdown">
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Employee
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item font" href="#">Employee List</a></li>
+                            <li><a class="dropdown-item font" href="#">Add Employee</a></li>
+                            <li><a class="dropdown-item font" href="#">Migration History</a></li>
+                            <li><a class="dropdown-item font" href="#">Enrolled/Not Yet Enrolled</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Attendance
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item font" href="#">Mark Attendance</a></li>
+                            <li><a class="dropdown-item font" href="#">Attendance Log</a></li>
+                            <li><a class="dropdown-item font" href="#">Attendance Summary</a></li>
+                            <li><br /></li>
+                            <li><a class="dropdown-item font" href="#">Bio Attendance</a></li>
+                            <li><a class="dropdown-item font" href="#">Raw Data</a></li>
+                            <li><a class="dropdown-item font" href="#">Attendance Dashboard</a></li>
 
-                    <button class="mynav_dropbtn">
-                       Company
-                    </button>
-                    <div class="mynav_dropdown-content">
-                        <a href="/Designation/Designation">Designations</a>
-                        <a asp-area="" asp-controller="Home" asp-action="Contact">Departments</a>
-                        <a asp-area="" asp-controller="Home" asp-action="Contact">Overtimes</a>
-                        <a asp-area="" asp-controller="Home" asp-action="Contact">Departments</a>
-                        <hr />
-                        <a asp-area="" asp-controller="Home" asp-action="Contact">User Rights    </a>
-                        <a asp-area="" asp-controller="Home" asp-action="Contact">Departments</a>
-                        <a asp-area="" asp-controller="Home" asp-action="Contact">Policy Name</a>
-                        <a asp-area="" asp-controller="Home" asp-action="Contact">Hiring</a>
-                        <a asp-area="" asp-controller="Home" asp-action="Contact">Division</a>
-                        <a asp-area="" asp-controller="Home" asp-action="Contact">Hostels</a>
-                        <a asp-area="" asp-controller="Home" asp-action="Contact">Bank</a>
-                    </div>
-                </div>
-                <div class="mynav_dropdown">
-                    <button class="mynav_dropbtn">
-                        Employee
-                    </button>
-                    <div class="mynav_dropdown-content">
-                        <a asp-area="" asp-controller="Home" asp-action="About">Employee List</a>
-                        <a asp-area="" asp-controller="Home" asp-action="Contact">Add Employee</a>
-                        <a asp-area="" asp-controller="Home" asp-action="Contact">Migration History</a>
-                        <a asp-area="" asp-controller="Home" asp-action="Contact">Enrolled/Not Yet Enrolled</a>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Self Services
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item font" href="#">My Attendance</a></li>
+                            <li><a class="dropdown-item font" href="#">My Leaves</a></li>
+                            <li><a class="dropdown-item font" href="#">My Leave Ledger</a></li>
+                            <li><br /></li>
+                            <li><a class="dropdown-item font" href="#">My To Do List</a></li>
+                            <li><a class="dropdown-item font" href="#">My Profile</a></li>
+                            <li><a class="dropdown-item font" href="#">Raw Data</a></li>
+                            <li><a class="dropdown-item font" href="#">Approve CR</a></li>
 
-                    </div>
-                </div>
-                <div class="mynav_dropdown">
-                    <button class="mynav_dropbtn">
-                        Attendance
-                    </button>
-                    <div class="mynav_dropdown-content">
-                        <a asp-area="" asp-controller="Home" asp-action="About">Mark Attendance</a>
-                        <a asp-area="" asp-controller="Home" asp-action="Contact">Attendance Log</a>
-                        <a asp-area="" asp-controller="Home" asp-action="Contact">Attendance Summary</a>
-                        <a asp-area="" asp-controller="Home" asp-action="Contact">Bio Attendance</a>
-                        <a asp-area="" asp-controller="Home" asp-action="Contact">Raw Data</a>
-                        <a asp-area="" asp-controller="Home" asp-action="Contact">Attendance Dashboard</a>
-                    </div>
-                </div>
-                <div class="mynav_dropdown">
-                    <button class="mynav_dropbtn">
-                       Self Services
-                    </button>
-                    <div class="mynav_dropdown-content">
-                        <a asp-area="" asp-controller="Home" asp-action="About">My Attendance</a>
-                        <a asp-area="" asp-controller="Home" asp-action="Contact">My Leaves</a>
-                        <a asp-area="" asp-controller="Home" asp-action="Contact">My Leave Ledger</a>
-                        <a asp-area="" asp-controller="Home" asp-action="Contact">My To Do List</a>
-                        <a asp-area="" asp-controller="Home" asp-action="Contact">My Profile</a>
-                        <a asp-area="" asp-controller="Home" asp-action="Contact">Approve CR</a>
-                    </div>
-                </div>
-            </div>
-            <div class="mynav_dropdown">
-                <button class="mynav_dropbtn">
-                    Reports
-                </button>
-                <div class="mynav_dropdown-content">
-                    <a asp-area="" asp-controller="Home" asp-action="About">Daily Attendance </a>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Monthly Attendance </a>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Late Arrival</a>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Machine Log</a>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Reports to</a>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Company Attend Summary</a>
-                </div>
-            </div>
-            <div class="mynav_dropdown">
-                <button class="mynav_dropbtn">
-                   HR
-                </button>
-                <div class="mynav_dropdown-content">
-                    <a asp-area="" asp-controller="Home" asp-action="About">Approve Leaves</a>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Leave Approvals History</a>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Attendance Request Approval</a>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Leave Ledger</a>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Announcements</a>
-    
-                </div>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Reports
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item font" href="#">Daily Attendance</a></li>
+                            <li><a class="dropdown-item font" href="#">Monthly  Attendance</a></li>
+                            <li><a class="dropdown-item font" href="#">Late Arrival</a></li>
+                            <li><a class="dropdown-item font" href="#">Machine Log</a></li>
+                            <li><a class="dropdown-item font" href="#">Reports To</a></li>
+                            <li><br /></li>
+                            <li><a class="dropdown-item font" href="#">Company Attend Summary</a></li>
+                            <li><a class="dropdown-item font" href="#">Check Lists</a></li>
+                            <li><a class="dropdown-item font" href="#">HR Reports</a></li>
+                            <li><a class="dropdown-item font" href="#">DynamicsHRReports</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            HR
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item font" href="#">Approve Leaves</a></li>
+                            <li><a class="dropdown-item font" href="#">Leave Approvals History</a></li>
+                            <li><a class="dropdown-item font" href="#">Attendance Request approvals</a></li>
+                            <li><a class="dropdown-item font" href="#">Leave Ledger</a></li>
+                            <li><a class="dropdown-item font" href="#">Announcements</a></li>
+                            <li><a class="dropdown-item font" href="#">Mobile Punch History</a></li>
+                            <li><a class="dropdown-item font" href="#">Resignation Request</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
-
     </nav>
     <div class="container body-content">
         @RenderBody()

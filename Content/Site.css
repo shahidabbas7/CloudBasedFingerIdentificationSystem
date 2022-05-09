@@ -75,4 +75,10 @@
 .mynav_dropdown:hover .mynav_dropdown-content {
     display: block;
 }
+.font{
+    font-size:16px;
+}
+.nav-color{
+    color:white;
+}
 

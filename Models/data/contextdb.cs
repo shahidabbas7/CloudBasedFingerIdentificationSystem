@@ -10,5 +10,6 @@ namespace CloudBasedFingerIdentificationSystem.Models.data
     {
         public DbSet<DesignationDTO> designations { get; set; }
         public DbSet<DepartmentDTO> departments { get; set; }
+        public DbSet<PolicyDTO> policy { get; set; }
     }
 }
