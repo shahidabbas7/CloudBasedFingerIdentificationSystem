@@ -1,0 +1,68 @@
+﻿@model IEnumerable<CloudBasedFingerIdentificationSystem.Models.ViewModels.HostelVM>
+
+@{
+    ViewBag.Title = "hostels";
+}
+
+<h2>hostels list</h2>
+@if (TempData["SM"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SM"]
+    </div>
+}
+<p>
+    <div class="text-right">
+        @Html.ActionLink("add New hostel", "addhostel")
+    </div>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Hostelid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HostelName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Warden)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hostelid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HostelName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Warden)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edithostel", new { id = item.Hostelid }) |
+                @Html.ActionLink("Delete", "Deletehostel", new { id = item.Hostelid }, new { @class = "delete" })
+            </td>
+        </tr>
+    }
+
+</table>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function () {
+            $("a.delete").click(function () {
+                if (!confirm("Are you sure you want to delete  Designation")) return false;
+            });
+        });
+    </script>
+}

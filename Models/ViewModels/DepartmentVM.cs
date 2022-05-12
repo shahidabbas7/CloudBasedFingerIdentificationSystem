@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace CloudBasedFingerIdentificationSystem.Models.ViewModels
 {
@@ -28,6 +29,7 @@ namespace CloudBasedFingerIdentificationSystem.Models.ViewModels
             primaryreportsto = dept.primaryreportsto;
             secondaryreportsto = dept.secondaryreportsto;
             employeeid = dept.employeeid;
+            DivisionCode = dept.DivisionCode;
         }
         [Display(Name ="Department Code")]
         public int deptcode { get; set; }
@@ -59,5 +61,9 @@ namespace CloudBasedFingerIdentificationSystem.Models.ViewModels
         [Display(Name = "Secondary Reports To")]
         public string secondaryreportsto { get; set; }
         public int? employeeid { get; set; }
+        public string DivisionCode { get; set; }
+        public IEnumerable<SelectListItem> Divisions { get; set; }
+        public IEnumerable<SelectListItem> Departments { get; set; }
+
     }
 }

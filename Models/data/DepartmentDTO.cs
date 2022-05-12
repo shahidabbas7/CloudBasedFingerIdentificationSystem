@@ -24,6 +24,10 @@ namespace CloudBasedFingerIdentificationSystem.Models.data
         public string primaryreportsto { get; set; }
         public string secondaryreportsto { get; set; }
         public int? employeeid { get; set; }
+        public string DivisionCode { get; set; }
+        [ForeignKey("DivisionCode")]
+        public virtual DivisionDTO divisions { get; set; }
+
 
     }
     }

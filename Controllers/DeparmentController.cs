@@ -26,6 +26,12 @@ namespace CloudBasedFingerIdentificationSystem.Controllers
         public ActionResult adddepartments()
         {
             DepartmentVM model = new DepartmentVM();
+            //get the lists from db
+            using(contextdb db=new contextdb())
+            {
+                model.Divisions = new SelectList(db.division.ToList(), "DivisionCode", "DivisionName");
+                model.Departments= new SelectList(db.departments.ToList(), "deptcode", "deptcode");
+            }
             return View(model);
         }
         [HttpPost]
@@ -35,6 +41,11 @@ namespace CloudBasedFingerIdentificationSystem.Controllers
             //check model validity
             if (!ModelState.IsValid)
             {
+                using (contextdb db = new contextdb())
+                {
+                    model.Divisions = new SelectList(db.division.ToList(), "DivisionCode", "DivisionName");
+                    model.Departments = new SelectList(db.departments.ToList(), "deptcode", "deptcode");
+                }
                 return View(model);
             }
             //init dto 
@@ -62,7 +73,9 @@ namespace CloudBasedFingerIdentificationSystem.Controllers
                 dto.shortdescription = model.shortdescription;
                 dto.approvedsalary = model.approvedsalary;
                 dto.email = model.email;
-                dto.division = model.division;
+                dto.DivisionCode = model.DivisionCode;
+                DivisionDTO div = db.division.Find(model.DivisionCode);
+                dto.division = div.DivisionName;
                 dto.leaveapprovedlevel = model.leaveapprovedlevel;
                 dto.salarygroup = model.salarygroup;
                 dto.primaryreportsto = model.primaryreportsto;
@@ -99,6 +112,10 @@ namespace CloudBasedFingerIdentificationSystem.Controllers
                 DepartmentDTO dto = db.departments.Find(id);
                 //init departmentvm
                 model = new DepartmentVM(dto);
+                //geting list of division
+                model.Divisions = new SelectList(db.division.ToList(), "DivisionCode", "DivisionName");
+                //getting list of dept
+                model.Departments = new SelectList(db.departments.ToList(), "deptcode", "deptcode");
             }
             return View(model);
         }
@@ -109,7 +126,13 @@ namespace CloudBasedFingerIdentificationSystem.Controllers
             //check model state
             if (!ModelState.IsValid)
             {
-                return View(model);
+                using (contextdb db = new contextdb())
+                {
+                    //geting list of division
+                    model.Divisions = new SelectList(db.division.ToList(), "DivisionCode", "DivisionName");
+                    model.Departments = new SelectList(db.departments.ToList(), "deptcode", "deptcode");
+                }
+                return View(model); 
             }
             //init department dto
             using (contextdb db=new contextdb())
@@ -135,7 +158,9 @@ namespace CloudBasedFingerIdentificationSystem.Controllers
                 dto.shortdescription = model.shortdescription;
                 dto.approvedsalary = model.approvedsalary;
                 dto.email = model.email;
-                dto.division = model.division;
+                dto.DivisionCode = model.DivisionCode;
+                DivisionDTO div = db.division.Find( model.DivisionCode);
+                dto.division = div.DivisionName;
                 dto.leaveapprovedlevel = model.leaveapprovedlevel;
                 dto.salarygroup = model.salarygroup;
                 dto.primaryreportsto = model.primaryreportsto;
@@ -242,7 +267,7 @@ namespace CloudBasedFingerIdentificationSystem.Controllers
             TempData["SM"] = "Policy Successfully Updated";
             return RedirectToAction("policy");
         }
-        // POST: Deparment//deletepolicy
+        // get: Deparment//deletepolicy
         public ActionResult deletepolicy(int id)
         {
             //delete the selected policy
@@ -258,6 +283,237 @@ namespace CloudBasedFingerIdentificationSystem.Controllers
             //redirect to view
             return RedirectToAction("policy");
         }
+        // get: Deparment//division
+        public ActionResult division()
+        {
+            //declare division vmlist
+            List<DivisionVM> divisionlist;
+            //init policy vmlist
+            using(contextdb db=new contextdb())
+            {
+                divisionlist = db.division.ToArray().Select(x => new DivisionVM(x)).ToList();
+            }
+            //return view with list
+            return View(divisionlist);
+        }
+        // get: Deparment//adddivision
+        public ActionResult adddivision()
+        {
+            DivisionVM model = new DivisionVM();
+            return View(model);
+        }
+        // POST: Deparment//adddivision
+        [HttpPost]
+        public ActionResult adddivision(DivisionVM model)
+        {
+            //check if model state is valid
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            //init dto
+            using(contextdb db=new contextdb())
+            {
+                //declare division dto
+                DivisionDTO dto = new DivisionDTO();
+                //check if the division name already exist
+                if (db.division.Any(x => x.DivisionName == model.DivisionName))
+                {
+                    ModelState.AddModelError("divisionerrorn", "Division Name " + model.DivisionName + " Already exist");
+                    return View(model);
+                }
+                //check if the division code already exist
+                if (db.division.Any(x => x.DivisionCode == model.DivisionCode))
+                {
+                    ModelState.AddModelError("divisionerrorc", "Division Code " + model.DivisionCode + " Already exist");
+                    return View(model);
+                }
+                //add to dto
+                dto.DivisionCode = model.DivisionCode;
+                dto.DivisionName = model.DivisionName;
+                db.division.Add(dto);
+                //save changes to database
+                db.SaveChanges();
+
+            }
+            //set success message
+            TempData["SM"] = "Division Successfully Added";
+            return RedirectToAction("division");
+        }
+        // get: Deparment//editdivision
+        public ActionResult editdivision(string id)
+        {
+            //declare division model
+            DivisionVM model;
+            using(contextdb db=new contextdb())
+            {
+                //init divisiondto
+                DivisionDTO dto = db.division.Find(id);
+                //init division model
+                model = new DivisionVM(dto);
+            }
+            //return view with model
+            return View(model);
+        }
+        // POST: Deparment//editpolicy
+        [HttpPost]
+        public ActionResult editdivision(DivisionVM model)
+        {
+            //check model state
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            using(contextdb db=new contextdb())
+            {
+                //init Divisiondto
+                DivisionDTO dto = db.division.Find(model.DivisionCode);
+                //check if the Division name exist
+                if (db.division.Where(x => x.DivisionCode != model.DivisionCode).Any(x => x.DivisionName == model.DivisionName))
+                {
+                    ModelState.AddModelError("divisionerrorn", "Division Name " + model.DivisionName + " Already exist");
+                    return View(model);
+                }
+                //set dto
+                dto.DivisionCode = model.DivisionCode;
+                dto.DivisionName = model.DivisionName;
+                db.SaveChanges();
+            }
+            //set temp message
+            TempData["SM"] = "division Successfully Updated";
+            return RedirectToAction("division");
+        }
+        // POST: Deparment//deletepolicy
+        public ActionResult deletedivision(string id)
+        {
+            //delete the selected policy
+            using(contextdb db=new contextdb())
+            {
+                //init Divisiondto
+                DivisionDTO dto = db.division.Find(id);
+                //remove Division
+                db.division.Remove(dto);
+                //save changes to db
+                db.SaveChanges();
+            }
+            //redirect to view
+            return RedirectToAction("division");
+        }
+        // GET: Deparment//hostels
+        public ActionResult hostels()
+        {
+            //declare hostel vm list
+            List<HostelVM> hostelvmlist;
+            //init hostelvmlist 
+            using (contextdb db = new contextdb())
+            {
+                hostelvmlist = db.Hostels.ToArray().Select(x => new HostelVM(x)).ToList();
+            }
+            return View(hostelvmlist);
+        }
+        // GET: Deparment//addhostel
+        public ActionResult addhostel()
+        {
+            HostelVM model = new HostelVM();
+            return View(model);
+        }
+        // POST: Deparment//addhostel
+        [HttpPost]
+        public ActionResult addhostel(HostelVM model)
+        {
+            //check if model state is valid
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            //init dto
+            using (contextdb db = new contextdb())
+            {
+                //declare hostel dto
+                HostelDTO dto = new HostelDTO();
+                //check if the hostel name already exist
+                if (db.Hostels.Any(x => x.HostelName == model.HostelName))
+                {
+                    ModelState.AddModelError("hostelerrorn", "Hostel Name " + model.HostelName + " Already exist");
+                    return View(model);
+                }
+                //add to dto
+                dto.Hostelid = model.Hostelid;
+                dto.HostelName = model.HostelName;
+                dto.Warden = model.Warden;
+                dto.Phone = model.Phone;
+                db.Hostels.Add(dto);
+                //save changes to database
+                db.SaveChanges();
+
+            }
+            //set success message
+            TempData["SM"] = "Hostel Successfully Added";
+            return RedirectToAction("hostels");
+        }
+        // get: Deparment//edithostel
+        public ActionResult edithostel(int id)
+        {
+            //declare hostel model
+            HostelVM model;
+            using (contextdb db = new contextdb())
+            {
+                //init hosteldto
+                HostelDTO dto = db.Hostels.Find(id);
+                //init hostel model
+                model = new HostelVM(dto);
+            }
+            //return view with model
+            return View(model);
+        }
+        // POST: Deparment//edithostel
+        [HttpPost]
+        public ActionResult edithostel(HostelVM model)
+        {
+            //check model state
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            using (contextdb db = new contextdb())
+            {
+                //init hosteldto
+                HostelDTO dto = db.Hostels.Find(model.Hostelid);
+                //check if the policy name exist
+                if (db.Hostels.Where(x => x.Hostelid != model.Hostelid).Any(x => x.HostelName == model.HostelName))
+                {
+                    ModelState.AddModelError("hostelerrorn", "Hostel Name " + model.HostelName + " Already exist");
+                    return View(model);
+                }
+                //set dto
+                dto.Hostelid = model.Hostelid;
+                dto.HostelName = model.HostelName;
+                dto.Warden = model.Warden;
+                dto.Phone = model.Phone;
+                db.SaveChanges();
+            }
+            //set temp message
+            TempData["SM"] = "Hostel Successfully Updated";
+            return RedirectToAction("hostels");
+        }
+        // get: Deparment//edithostel
+        public ActionResult deletehostel(int id)
+        {
+            //delete the selected policy
+            using (contextdb db = new contextdb())
+            {
+                //init hosteldto
+                HostelDTO dto = db.Hostels.Find(id);
+                //remove hostel
+                db.Hostels.Remove(dto);
+                //save changes to db
+                db.SaveChanges();
+            }
+            //redirect to view
+            return RedirectToAction("hostels");
+        }
+
+
 
     }
 }

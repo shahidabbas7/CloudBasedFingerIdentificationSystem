@@ -67,7 +67,7 @@ namespace CloudBasedFingerIdentificationSystem.Controllers
             //set tempdata message
             TempData["SM"] = "Designation Added";
             //redirect to  page
-            return RedirectToAction("adddesignation");
+            return RedirectToAction("Designation");
 
         }
         // get: Designation//editdesignation

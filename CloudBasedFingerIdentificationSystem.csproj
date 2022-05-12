@@ -132,20 +132,29 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205110701265_mg1.cs" />
+    <Compile Include="Migrations\202205110701265_mg1.Designer.cs">
+      <DependentUpon>202205110701265_mg1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205121326467_first mg.cs" />
+    <Compile Include="Migrations\202205121326467_first mg.Designer.cs">
+      <DependentUpon>202205121326467_first mg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\data\contextdb.cs" />
     <Compile Include="Models\data\DepartmentDTO.cs" />
     <Compile Include="Models\data\DesignationDTO.cs" />
+    <Compile Include="Models\data\DivisionDTO.cs" />
+    <Compile Include="Models\data\HostelDTO.cs" />
     <Compile Include="Models\data\PolicyDTO.cs" />
     <Compile Include="Models\ViewModels\DepartmentVM.cs" />
     <Compile Include="Models\ViewModels\DesignationVM.cs" />
+    <Compile Include="Models\ViewModels\DivisionVM.cs" />
+    <Compile Include="Models\ViewModels\HostelVM.cs" />
     <Compile Include="Models\ViewModels\PolicyVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\CloudBasedFingerIdentificationSystem.mdf" />
-    <Content Include="App_Data\CloudBasedFingerIdentificationSystem_log.ldf">
-      <DependentUpon>CloudBasedFingerIdentificationSystem.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -190,8 +199,21 @@
     <Content Include="Views\Department\policy.cshtml" />
     <Content Include="Views\Department\addpolicy.cshtml" />
     <Content Include="Views\Department\editpolicy.cshtml" />
+    <Content Include="Views\Department\division.cshtml" />
+    <Content Include="Views\Department\adddivision.cshtml" />
+    <Content Include="Views\Department\editdivision.cshtml" />
+    <Content Include="Views\Department\hostels.cshtml" />
+    <Content Include="Views\Department\addhostel.cshtml" />
+    <Content Include="Views\Department\edithostel.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202205110701265_mg1.resx">
+      <DependentUpon>202205110701265_mg1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205121326467_first mg.resx">
+      <DependentUpon>202205121326467_first mg.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -204,6 +226,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

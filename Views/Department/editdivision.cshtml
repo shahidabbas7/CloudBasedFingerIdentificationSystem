@@ -1,0 +1,43 @@
+﻿@model CloudBasedFingerIdentificationSystem.Models.ViewModels.DivisionVM
+
+@{
+    ViewBag.Title = "editdivision";
+}
+
+<h2>editdivision</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>DivisionVM</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.DivisionCode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DivisionCode, new { htmlAttributes = new { @class = "form-control" ,@readonly="readonly"} })
+                @Html.ValidationMessageFor(model => model.DivisionCode, "", new { @class = "text-danger" })
+                @Html.ValidationMessage("divisionerrorc", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DivisionName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DivisionName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DivisionName, "", new { @class = "text-danger" })
+                @Html.ValidationMessage("divisionerrorn", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Edit Division" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
